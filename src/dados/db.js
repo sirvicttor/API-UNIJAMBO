@@ -2,6 +2,6 @@ const alunos = []
 const professores = []
 const disciplinas = []
 const cursos = []
-const turmas = []
+const  turmas = []
 
-export {alunos,professores,disciplinas, cursos, turmas}
+export {alunos,professores,disciplinas,cursos,turmas}
