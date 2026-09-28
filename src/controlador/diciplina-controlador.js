@@ -5,20 +5,20 @@ resposta.json(cursos)
 }
 
 const criar = async (pedido,resposta) => {
-    const {nome, codigo, qtd_semestres} = pedido.body
-    const [resultado] = await banco.query('insert into cursos(nome, codigo, qtd_semestres) values(?,?,?)',
-        [nome, codigo, qtd_semestres]
+    const {nome, codigo, id_curso} = pedido.body
+    const [resultado] = await banco.query('insert into cursos(nome, codigo, id_curso) values(?,?,?)',
+        [nome, codigo, id_curso]
     )
-    resposta.json({id: resultado.insertid,nome, codigo, qtd_semestres})
+    resposta.json({id: resultado.insertid,nome, codigo, id_curso})
 }
 
 const editar = async (pedido,resposta) => {
-    const {nome, codigo, qtd_semestres} = pedido.body
+    const {nome, codigo, id_curso} = pedido.body
     const {id} = pedido.params
     
     const [resultado] = await banco.query(
-        'updade cursos set nome = ?, codigo = ?, qtd_semestres =?',
-    [nome, codigo, qtd_semestres])
+        'updade cursos set nome = ?, codigo =?, id_curso = ?',
+    [nome, codigo, id_curso])
 
     if(resultado.affectedRows === 0) {
         resposta.json({mensagem: 'curso não encontrado!'})
